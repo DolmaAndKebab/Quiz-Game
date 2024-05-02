@@ -35,3 +35,23 @@ body {
     align-items: center;
     text-align: center;
 }
+
+#Answers_Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #eeeeee;
+    border: 0 solid transparent;
+    border-radius: 0.5rem;
+}
+
+button {
+    margin: 0.5rem !important;
+    cursor: pointer;
+}
+
+p span {
+    color: var(--bs-primary);
+}
