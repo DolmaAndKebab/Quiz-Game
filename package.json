@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Play a Simple Quiz Game!",
   "main": "./Index.js",
+  "type": "module",
   "scripts": {
     "start": "node ."
   },
@@ -32,5 +33,10 @@
   "homepage": "https://github.com/DolmaAndKebab/Quiz-Game#readme",
   "dependencies": {
     "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "eslint": "^9.1.1",
+    "globals": "^15.1.0"
   }
 }
