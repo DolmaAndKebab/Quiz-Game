@@ -33,3 +33,24 @@ node_modules/*/*
 .
 .*
 .**
+
+# Code Editor files (MUST BE IGNORED!)
+.vscode
+.vscode/*
+./.vscode/*/*
+./vscode/*/*
+./.vscode/*
+./.vscode**
+./.vscode*
+./.vscode/**
+./.vscode
+./vscode/*
+./vscode/*/*
+./vscode*
+./vscode**
+./vscode/
+./.vscode/
+.vscode/**
+.vscode/*/*
+.vscode*
+.vscode**
