@@ -1,0 +1,36 @@
+{
+  "name": "quiz-game",
+  "version": "1.0.0",
+  "description": "Play a Simple Quiz Game!",
+  "main": "./Index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DolmaAndKebab/Quiz-Game.git"
+  },
+  "keywords": [
+    "Javascript",
+    "JS",
+    "HTML",
+    "CSS",
+    "html",
+    "css",
+    "Html",
+    "Css",
+    "Quiz",
+    "Quiz",
+    "Game",
+    "Game"
+  ],
+  "author": "DolmaAndKebab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DolmaAndKebab/Quiz-Game/issues"
+  },
+  "homepage": "https://github.com/DolmaAndKebab/Quiz-Game#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
