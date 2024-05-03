@@ -26,6 +26,16 @@ const Quiz = [
     Answers: ["1", "4", "5", "6", "10"],
     Real_Answer: "4",
   },
+  {
+    Question: "What is 2 * 10",
+    Answers: ["5", "10", "4", "100", "21", "25", "20"],
+    Real_Answer: "20",
+  },
+  {
+    Question: "Whats better Kebab or Sharwama",
+    Answers: ["None", "Both", "Kebab", "Sharwama"],
+    Real_Answer: "Kebab",
+  },
 ];
 
 let Quiz_Num = 0;
