@@ -11,6 +11,9 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 if (document.getElementById("Quiz") instanceof HTMLElement) {
   var Quiz_Container = document.getElementById("Quiz");
 }
+if (document.getElementById("ROOT") instanceof HTMLElement) {
+  var Root = document.getElementById("ROOT");
+}
 
 const Quiz = [
   {
@@ -51,15 +54,66 @@ function Handle_Toggled_Answer() {
 }
 
 function Show_Quiz() {
-  // Showing the win screen!
-  if (Quiz_Num > Quiz_Max) {
-    const sumbit = document.getElementById("submit");
-    sumbit.remove();
+  // Showing the win screen if the player has won!
+  if (Quiz_Num >= Quiz_Max) {
+    // Delete submit button!
+    const submit = document.getElementById("submit");
+    submit.remove();
 
+    // Reset the Quiz_Container
     while (Quiz_Container.firstChild) {
       Quiz_Container.removeChild(Quiz_Container.firstChild);
     }
+
+    // Creating Win_Message
+    const Win_Message = document.createElement("div");
+
+    Win_Message.classList.add("alert");
+    Win_Message.classList.add("alert-success");
+    Win_Message.role = "alert";
+
+    Win_Message.innerHTML = "That was the Last Quiz. YOU WON!";
+
+    // Creating Restart
+    const Restart = document.createElement("button");
+
+    Restart.classList.add("btn");
+    Restart.classList.add("btn-primary");
+    Restart.type = "button";
+
+    Restart.innerHTML = "Restart";
+
+    // Appending Elements
+    Quiz_Container.appendChild(Win_Message);
+    Quiz_Container.appendChild(Restart);
+
+    // Handling Restart
+    Restart.addEventListener("click", () => {
+      Toggled = 0;
+      Quiz_Num = 0;
+
+      // Recreating Submit button
+      const Submit_Button = document.createElement("button");
+
+      Submit_Button.id = "submit";
+
+      Submit_Button.classList.add("btn");
+      Submit_Button.classList.add("btn-primary");
+      Submit_Button.type = "button";
+
+      Submit_Button.innerHTML = "Submit";
+
+      // Appending Submit_Button
+      Root.appendChild(Submit_Button);
+
+      // Restarting
+      Handle_Quiz();
+    });
+
+    return;
   }
+
+  // Showing the Quiz
 
   // Setting Quiz_Container
   while (Quiz_Container.firstChild) {
@@ -131,15 +185,25 @@ function Check_Quiz_Format() {
 }
 
 function Handle_Quiz() {
+  // Checking if the player won!
+  if (Quiz_Num >= Quiz_Max) {
+    Show_Quiz();
+    return;
+  }
   // Showing the quiz
   if (Check_Quiz_Format()) {
     Show_Quiz();
 
-    const SumbitButton = document.getElementById("Sumbit");
+    const SumbitButton = document.getElementById("submit");
 
     SumbitButton.addEventListener("click", () => {
       if (Toggled.toString() === Quiz[Quiz_Num].Real_Answer.toString()) {
-        // Setting Quiz_Container
+        // Checking if the Player won!
+        if (Quiz_Num >= Quiz_Max) {
+          Handle_Quiz();
+          return;
+        }
+        // Resetting Quiz_Container
         while (Quiz_Container.firstChild) {
           Quiz_Container.removeChild(Quiz_Container.firstChild);
         }
@@ -162,6 +226,10 @@ function Handle_Quiz() {
 
         Next.innerHTML = "Go to New Quiz!";
 
+        // Delete submit button!
+        const submit = document.getElementById("submit");
+        submit.remove();
+
         // Appending Elements
         Quiz_Container.appendChild(Correct_Message);
         Quiz_Container.append(Next);
@@ -170,6 +238,22 @@ function Handle_Quiz() {
         Next.addEventListener("click", () => {
           Toggled = 0;
           Quiz_Num += 1;
+
+          // Recreating Submit button
+          const Submit_Button = document.createElement("button");
+
+          Submit_Button.id = "submit";
+
+          Submit_Button.classList.add("btn");
+          Submit_Button.classList.add("btn-primary");
+          Submit_Button.type = "button";
+
+          Submit_Button.innerHTML = "Submit";
+
+          // Appending Submit_Button
+          Root.appendChild(Submit_Button);
+
+          // Handling Quiz
           Handle_Quiz();
         });
       } else {
@@ -196,6 +280,10 @@ function Handle_Quiz() {
 
         Retry.innerHTML = "Retry";
 
+        // Delete submit button!
+        const submit = document.getElementById("submit");
+        submit.remove();
+
         // Appending Elements
         Quiz_Container.appendChild(Incorrect_Message);
         Quiz_Container.appendChild(Retry);
@@ -204,6 +292,22 @@ function Handle_Quiz() {
         Retry.addEventListener("click", () => {
           Toggled = 0;
           Quiz_Num = 0;
+
+          // Recreating Submit button
+          const Submit_Button = document.createElement("button");
+
+          Submit_Button.id = "submit";
+
+          Submit_Button.classList.add("btn");
+          Submit_Button.classList.add("btn-primary");
+          Submit_Button.type = "button";
+
+          Submit_Button.innerHTML = "Submit";
+
+          // Appending Submit_Button
+          Root.appendChild(Submit_Button);
+
+          // Handling Quiz
           Handle_Quiz();
         });
       }
